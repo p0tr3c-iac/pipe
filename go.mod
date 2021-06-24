@@ -31,6 +31,8 @@ require (
 	github.com/google/uuid v1.2.0
 	github.com/googleapis/gnostic v0.2.2 // indirect
 	github.com/hashicorp/golang-lru v0.5.3
+	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
+	github.com/k0kubun/pp v3.0.1+incompatible
 	github.com/minio/minio-go/v7 v7.0.5
 	github.com/prometheus/client_golang v1.6.0
 	github.com/prometheus/client_model v0.2.0

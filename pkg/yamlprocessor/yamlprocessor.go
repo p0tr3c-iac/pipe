@@ -17,11 +17,11 @@ package yamlprocessor
 import (
 	"bytes"
 	"fmt"
-	"io"
 
 	goyaml "github.com/goccy/go-yaml"
 	"github.com/goccy/go-yaml/ast"
 	"github.com/goccy/go-yaml/parser"
+	"github.com/k0kubun/pp"
 )
 
 // GetValue gives back the value placed at a given path. The type of
@@ -71,9 +71,13 @@ func ReplaceValue(yml []byte, path string, value string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	file, err := parser.ParseBytes(yml, 0)
+	file, err := parser.ParseBytes(yml, parser.ParseComments)
 	if err != nil {
 		return nil, err
+	}
+	if path == "$.nakabonne" {
+		pp.Println("file:", file)
+		fmt.Println("file contents:", file.String())
 	}
 
 	// Retrieve the current node placed at the specified path.
@@ -91,7 +95,5 @@ func ReplaceValue(yml []byte, path string, value string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	buf := new(bytes.Buffer)
-	_, err = io.Copy(buf, file)
-	return buf.Bytes(), err
+	return []byte(file.String()), err
 }

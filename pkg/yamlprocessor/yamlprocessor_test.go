@@ -176,6 +176,19 @@ func TestReplaceValue(t *testing.T) {
 			wantErr: false,
 		},
 		{
+			name: "valid value with comments given",
+			yml: `
+nakabonne: bar
+# some comments
+dummy: value`,
+			path:  "$.nakabonne",
+			value: "new-text",
+			want: []byte(`# some comments
+nakabonne: new-text
+dummy: value`),
+			wantErr: false,
+		},
+		{
 			name: "array in block style",
 			yml: `foo:
   - bar

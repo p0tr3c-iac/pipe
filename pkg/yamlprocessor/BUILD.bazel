@@ -9,6 +9,7 @@ go_library(
         "@com_github_goccy_go_yaml//:go_default_library",
         "@com_github_goccy_go_yaml//ast:go_default_library",
         "@com_github_goccy_go_yaml//parser:go_default_library",
+        "@com_github_k0kubun_pp//:go_default_library",
     ],
 )
 
